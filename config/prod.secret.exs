@@ -12,7 +12,9 @@ database_url =
     """
 
 config :slack_estimations, SlackEstimations.Repo,
-  # ssl: true,
+  adapter: Ecto.Adapters.Postgres,
+  database: "",
+  ssl: true,
   url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
