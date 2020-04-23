@@ -19,7 +19,7 @@ defmodule SlackEstimationsWeb.SlackApi.ActionsController do
   defp extract_user_handle(%{"user" => %{"id" => user_id}}), do: "<@#{user_id}>"
 
   defp handle_action(%{"type" => "button", "value" => "vote"}, user_handle, data) do
-    IO.puts "VOTE by #{user_handle}"
+    SlackEstimationsWeb.SlackApi.Voting.handle_vote_async(user_handle, data)
   end
 
   defp handle_action(%{"type" => "button", "value" => "end_voting"}, user_handle, data) do
