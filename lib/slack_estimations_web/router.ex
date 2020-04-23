@@ -13,10 +13,20 @@ defmodule SlackEstimationsWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :slack do
+    plug :accepts, ["json"]
+  end
+
   scope "/", SlackEstimationsWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+  end
+
+  scope "/slack", SlackEstimationsWeb.SlackApi do
+    pipe_through :api
+
+    post "/commands", CommandsController, :receive
   end
 
   # Other scopes may use custom stacks.
