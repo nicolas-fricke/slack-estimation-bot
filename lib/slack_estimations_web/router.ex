@@ -27,6 +27,7 @@ defmodule SlackEstimationsWeb.Router do
     pipe_through :api
 
     post "/commands", CommandsController, :receive
+    post "/actions", ActionsController, :receive
   end
 
   # Other scopes may use custom stacks.
