@@ -16,14 +16,9 @@ defmodule SlackEstimationsWeb.SlackApi.EstimationMessageSender do
   end
 
   defp build_body(channel_id, text) do
-    # TODO: Replace this with actual data from Jira
     ticket_number = extract_ticket_number(text)
     jira_link = "https://robohash.org/#{ticket_number}"
-    ticket_data = %{
-      type: "Bug",
-      status: "Open",
-      title: "Add a Hello to the World",
-    }
+    {_, ticket_data} = SlackEstimationsWeb.JiraApi.Ticket.fetch(ticket_number)
 
     %{
       channel: channel_id,
