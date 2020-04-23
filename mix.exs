@@ -33,6 +33,7 @@ defmodule SlackEstimations.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:httpoison, "~> 1.6"},
       {:phoenix, "~> 1.4.16"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
