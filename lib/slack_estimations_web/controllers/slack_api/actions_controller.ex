@@ -21,6 +21,6 @@ defmodule SlackEstimationsWeb.SlackApi.ActionsController do
   end
 
   defp handle_action(%{"type" => "button", "value" => "end_voting"}, user_handle, data) do
-    IO.puts "#{user_handle} ENDED VOTING"
+    SlackEstimationsWeb.SlackApi.ShowResults.handle_end_async(user_handle, data)
   end
 end
