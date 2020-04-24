@@ -4,8 +4,6 @@ defmodule SlackEstimationsWeb.SlackApi.ActionsController do
   def receive(conn, %{"payload" => payload}) do
     data = Jason.decode!(payload)
 
-    IO.inspect data
-
     action = extract_action(data)
     user_handle = extract_user_handle(data)
 
